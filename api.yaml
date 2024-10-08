@@ -1,0 +1,16 @@
+providers:
+  - provider: openai # Service provider name, such as openai, anthropic, gemini, openrouter, deepbricks, any name is fine, required
+    base_url: https://opus.gptuu.com/v1/chat/completions # Backend service API address, required
+    api: sk-kAUs5wYL8GlJEsRgD94d3aAaA8Ab469bB625C35e0e271e05 # Provider's API Key, required
+    model: # At least one model must be filled in
+      - gpt-4o
+      - gpt-4-1106-preview
+      - gpt-4-0125-preview
+      - gpt-4o-2024-05-13
+      - gpt-4o-2024-08-06
+
+api_keys:
+  - api: sk-1145141919810 # API Key, users need an API key to use this service, required
+    model: # Models that this API Key can use, required
+      - all # Usable model name, can use all gpt-4o models provided by providers
+    role: admin
