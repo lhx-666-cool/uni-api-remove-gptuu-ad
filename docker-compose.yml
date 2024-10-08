@@ -1,0 +1,8 @@
+services:
+  uni-api:
+    container_name: uni-api
+    image: hxzzz/uni-api:latest
+    ports:
+      - 8001:8000
+    volumes:
+      - ./api.yaml:/home/api.yaml
