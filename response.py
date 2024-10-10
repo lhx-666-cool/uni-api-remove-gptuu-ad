@@ -163,12 +163,18 @@ async def fetch_gpt_response_stream(client, url, headers, payload):
                 line, buffer = buffer.split("\n", 1)
                 # logger.info("line: %s", repr(line))
                 if line and line != "data: " and line != "data:" and not line.startswith(": "):
-                    print(line)
+                    # print(line)
                     if line != 'data: [DONE]':
                         data = json.loads(line.replace('data: ', ''))
-                        if data['choices'][0]['finish_reason'] == 'stop':
-                            return
-                    yield line.strip() + end_of_line
+                    #     if data['choices'][0]['finish_reason'] == 'stop':
+                    #         return
+                        if 'finish_reason' not in data['choices'][0]:
+                            print(data)
+                            pass
+                        else:
+                            yield line.strip() + end_of_line
+                    else:
+                        yield line.strip() + end_of_line
 
 async def fetch_cloudflare_response_stream(client, url, headers, payload, model):
     timestamp = int(datetime.timestamp(datetime.now()))
